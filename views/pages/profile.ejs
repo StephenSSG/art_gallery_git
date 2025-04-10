@@ -1,0 +1,17 @@
+<h1 class="mb-4">Welcome, <%= user.username %></h1>
+<h3>Saved Artworks</h3>
+<div class="row">
+  <% savedArts.forEach(art => { %>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= art.title %></h5>
+          <a href="/artwork/<%= art.artId %>" class="btn btn-primary">View</a>
+          <form action="/user/unsave-art/<%= art._id %>" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger">Unsave</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  <% }); %>
+</div>

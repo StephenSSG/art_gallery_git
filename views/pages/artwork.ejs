@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-6">
+      <img src="<%= imageUrl %>" class="img-fluid rounded">
+    </div>
+    <div class="col-md-6">
+      <h1><%= art.title %></h1>
+      <p class="lead"><%= art.artist_display %></p>
+      <p><%= art.description || 'No description available' %></p>
+      
+      <% if (user) { %>
+        <form action="/user/save-art" method="POST">
+          <input type="hidden" name="artId" value="<%= art.id %>">
+          <input type="hidden" name="title" value="<%= art.title %>">
+          <button type="submit" class="btn <%= isSaved ? 'btn-secondary' : 'btn-success' %>">
+            <%= isSaved ? 'Unsave' : 'Save to Profile' %>
+          </button>
+        </form>
+      <% } %>
+    </div>
+  </div>
